@@ -1,0 +1,34 @@
+<html>
+<body>
+	<h1>File Upload with Jersey</h1>
+
+	<form name="productForm" action="http://localhost:8080/myapp/product"
+		method="post" enctype="multipart/form-data">
+		<p>
+			Name: <input type="text" name="productName" />
+		</p>
+		<p>
+			Long: Description: <input type="text" name="longDescription" />
+		</p>
+		<p>
+			Short: Description: <input type="text" name="shortDescription" />
+		</p>
+		<p>
+			Category: <input type="text" name="category" />
+		</p>
+		<p>
+			Price: <input type="number" step="any" name="price" />
+		</p>
+		<p>
+			Discount: <input type="number" step="any" name="discount" />
+		</p>
+		<p>
+			Select a file : <input type="file" name="file" size="45" />
+		</p>
+		<p>
+			<input type="submit" value="Upload It" />
+		</p>
+	</form>
+
+</body>
+</html>
