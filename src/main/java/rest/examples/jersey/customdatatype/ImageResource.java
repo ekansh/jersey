@@ -1,5 +1,4 @@
 package rest.examples.jersey.customdatatype;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,6 @@ import javax.activation.MimetypesFileTypeMap;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
@@ -21,27 +19,20 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-import dbconnection.DataStore;
-import rest.examples.jersey.model.Product;
 
 public class ImageResource {
-
 	@GET
 	@Produces("image/*")
 	public Response get(@PathParam("id") String id) {
 		System.out.println("getting image for id "+id);
-		Product pr = DataStore.getProducts().get(id);
-		if ( pr  == null){
-			return Response.status(200).entity("Product with the id "+id +"doesnt exist ").build();
-			
-		}
-		String image = pr.getImage().getPathToImage();
+		String image = id;
 		File f = new File(image);
 		if (!f.exists()) {
 			throw new WebApplicationException(404);
 		}
 		String mt = new MimetypesFileTypeMap().getContentType(f);
-		return Response.ok(f, mt).build();
+		 Response response= Response.ok(f, mt).build();
+		 return response;
 	}
 
 	@POST
